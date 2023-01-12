@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.text.Font?>
+<VBox spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="grafikus.GrafikusController">
+    <MenuBar fx:id="menuBar">
+        <menus>
+            <Menu text="Adatbázis">
+                <items>
+                    <MenuItem text="Olvas" onAction="#menuReadClick"/>
+                </items>
+                <items>
+                    <MenuItem text="Olvas2" onAction="#menuRead2Click"/>
+                </items>
+                <items>
+                    <MenuItem text="Ír" onAction="#menuCreateClick"/>
+                </items>
+                <items>
+                    <MenuItem text="Módosít" onAction="#menuUpdateClick"/>
+                </items>
+                <items>
+                    <MenuItem text="Töröl" onAction="#menuDeleteClick"/>
+                </items>
+            </Menu>
+            <Menu text="Rest1">
+                <items>
+                    <MenuItem text="Create" onAction="#Rest1CreateClick"/>
+                </items>
+                <items>
+                    <MenuItem text="Read" onAction="#Rest1ReadClick"/>
+                </items>
+                <items>
+                    <MenuItem text="Update" onAction="#Rest1UpdateClick"/>
+                </items>
+                <items>
+                    <MenuItem text="Delete" onAction="#Rest1DeleteClick"/>
+                </items>
+            </Menu>
+            <Menu text="Rest2">
+                <items>
+                    <MenuItem text="Create" onAction="#Rest2CreateClick"/>
+                </items>
+                <items>
+                    <MenuItem text="Read" onAction="#Rest2ReadClick"/>
+                </items>
+                <items>
+                    <MenuItem text="Update" onAction="#Rest2UpdateClick"/>
+                </items>
+                <items>
+                    <MenuItem text="Delete" onAction="#Rest2DeleteClick"/>
+                </items>
+            </Menu>
+            <Menu text="Soap">
+                <items>
+                    <MenuItem text="Letoltes" onAction="#SoapLetoltesClick"/>
+                </items>
+                <items>
+                    <MenuItem text="Letoltes2" onAction="#SoapLetoltes2Click"/>
+                </items>
+                <items>
+                    <MenuItem text="Grafikon" onAction="#SoapGrafikonClick"/>
+                </items>
+            </Menu>
+            <Menu text="Adatbányászat">
+                <items>
+                    <MenuItem text="Dontesifa" onAction="#AdatbanyaszatDontesifaClick"/>
+                </items>
+                <items>
+                    <MenuItem text="Algoritmus" onAction="#AdatbanyaszatAlgoritmusClick"/>
+                </items>
+                <items>
+                    <MenuItem text="Algoritmus2" onAction="#AdatbanyaszatAlgoritmus2Click"/>
+                </items>
+            </Menu>
+            <Menu text="Egyéb">
+                <items>
+                    <MenuItem text="Parhuzamos" onAction="#EgyebParhuzamosClick"/>
+                </items>
+                <items>
+                    <MenuItem text="Stream" onAction="#EgyebStreamClick"/>
+                </items>
+            </Menu>
+
+        </menus>
+    </MenuBar>
+    <Label fx:id="lb1">Adatok</Label>
+    <GridPane fx:id="gp1" hgap="2" vgap="4">
+        <Label text="Táblába írás!" GridPane.columnIndex="0" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label GridPane.rowIndex="4" GridPane.columnIndex="0">Nemzeti Park Név:</Label>
+        <TextField fx:id="tfnev" GridPane.rowIndex="4" GridPane.columnIndex="1"></TextField>
+        <Label GridPane.rowIndex="5" GridPane.columnIndex="0">Igazgató:</Label>
+        <TextField fx:id="tfigazgato" GridPane.rowIndex="5" GridPane.columnIndex="1"></TextField>
+        <Label GridPane.rowIndex="6" GridPane.columnIndex="0">Kinevezés:</Label>
+        <TextField fx:id="tfkinevezes" GridPane.rowIndex="6" GridPane.columnIndex="1"></TextField>
+        <Button onAction="#bt1Click" GridPane.rowIndex="7" GridPane.columnIndex="1" >Küldés</Button>
+    </GridPane>
+    <TableView fx:id="tv1" >
+        <Label text="Tábla adatainak megjelenítése!" GridPane.columnIndex="0" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    </TableView>
+
+    <Label fx:id="lb2">Adat módosítás</Label>
+    <GridPane fx:id="gp2" hgap="2" vgap="4">
+        <Label text="Adat módosítás!" GridPane.columnIndex="0" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Válassza ki, melyik ID-t szeretné módosítani" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <ComboBox fx:id="cb1" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+        <Button fx:id="bt1" onAction="#bt2Click" GridPane.columnIndex="0" GridPane.rowIndex="7">Küldés</Button>
+    </GridPane>
+
+    <Label fx:id="lb3">Adat törlés</Label>
+    <GridPane fx:id="gp4" hgap="2" vgap="4">
+        <Label text="Adat Törlés!" GridPane.columnIndex="0" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Label text="Válassza ki, melyik ID-t szeretné törölni" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <ComboBox fx:id="cb2" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+        <Button fx:id="bt2" onAction="#bt4Click" GridPane.columnIndex="0" GridPane.rowIndex="7">Küldés</Button>
+    </GridPane>
+
+
+
+
+    <GridPane fx:id="gp6">
+        <Label text="RESTapi Felhasználó lekérése!" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Adjon meg egy ID-t. Üres ID esetén mindenkit listáz a program." GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <TextField fx:id="tf6" promptText="User ID" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <Button mnemonicParsing="false" onAction="#btnRest1ReadClick" text="User lekérdezés" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Label text="Lekért felhasználó adatok :" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <TextArea fx:id="ta1" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+    </GridPane>
+    <GridPane fx:id="gp7">
+        <Label text="RESTapi Felhasználó létrehozása!" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Név:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <TextField fx:id="tf7" promptText="Név" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <Label text="Nem:" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <TextField fx:id="tf8" promptText="Nem" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Label text="E-mail:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <TextField fx:id="tf9" promptText="E-mail" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+        <Label text="Státusz:" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+        <TextField fx:id="tf10" promptText="Státusz" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+        <Button mnemonicParsing="false" onAction="#btnRest1CreateClick" text="Felhasználó létrehozása" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+        <Label text="A létrehozás eredménye:" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+        <TextArea fx:id="ta2" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+    </GridPane>
+    <GridPane fx:id="gp8">
+        <Label text="RESTapi Felhasználó módosítása!" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="ID:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <TextField fx:id="tf11" promptText="Id" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <Label text="Név:" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <TextField fx:id="tf12" promptText="Név" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Label text="Nem:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <TextField fx:id="tf13" promptText="Nem" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+        <Label text="E-mail:" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+        <TextField fx:id="tf14" promptText="E-mail" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+        <Label text="Státusz:" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+        <TextField fx:id="tf15" promptText="Státusz" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+        <Button mnemonicParsing="false" onAction="#btnRest1UpdateClick" text="Felhasználó módosítása" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+        <Label text="A módosítás eredménye:" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+        <TextArea fx:id="ta3" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+    </GridPane>
+    <GridPane fx:id="gp9">
+        <Label text="RESTapi Felhasználó törlése!" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Törölni kívánt felhasználó ID:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <TextField fx:id="tf16" promptText="id" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <Button mnemonicParsing="false" onAction="#btnRest1DeleteClick" text="Felhasználó törlése" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Label text="A törlés eredménye:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <TextArea fx:id="ta4" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+    </GridPane>
+
+    <GridPane fx:id="gp10">
+        <Label text="RESTapi2 Felhasználó létrehozása!" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Kidolgozás alatt!" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    </GridPane>
+    <GridPane fx:id="gp11">
+        <Label text="RESTapi2 Felhasználó lekérése!" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Kidolgozás alatt!" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    </GridPane>
+    <GridPane fx:id="gp12">
+        <Label text="RESTapi2 Felhasználó módosítása!" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Kidolgozás alatt!" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    </GridPane>
+    <GridPane fx:id="gp13">
+        <Label text="RESTapi2 Felhasználó törlése!" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Kidolgozás alatt!" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    </GridPane>
+
+    <GridPane fx:id="gp14">
+        <Label text="SOAP letöltés!" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Kidolgozás alatt!" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    </GridPane>
+    <GridPane fx:id="gp15">
+        <Label text="SOAP letöltés2!" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Kidolgozás alatt!" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    </GridPane>
+    <GridPane fx:id="gp16">
+        <Label text="SOAP grafikon!" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Kidolgozás alatt!" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    </GridPane>
+
+    <GridPane fx:id="gp17">
+        <Label text="Döntési fa" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="A gombra kattintás után az eredményt a Dontesifa.txt -ben találja." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <Button mnemonicParsing="false" onAction="#btnAdatbanyaszatDontesiFa" text="Indít" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <Label fx:id="döntésiFaMsg" text="" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+    </GridPane>
+
+
+
+    <GridPane fx:id="gp5">
+        <Label text="Párhuzamos működés tesztelése!" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Button mnemonicParsing="false" onAction="#btnParhuzamosClick" text="Indítás!" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    </GridPane>
+</VBox>
